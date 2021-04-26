@@ -28,7 +28,7 @@ void print_program_description_to_terminal() {
 // program entry point - main method
 int main() {
 
-int price, deposit, mortgage_term, interest_rate;
+int price, deposit, mortgage_term, interest_rate, deposit_deucted_from_price, annual_fee, interest_fee, actual_annual_fee, monthly_fee;
 	
 	print_program_description_to_terminal();
 	
@@ -44,13 +44,22 @@ int price, deposit, mortgage_term, interest_rate;
 	printf("Enter interest rate: ");
 	scanf("%d",&interest_rate);
 
-	int deposit_deducted_from_price = price - deposit;
+	deposit_deucted_from_price = price - deposit;
 
-	int month_pay = (deposit_deducted_from_price / mortgage_term) / 12;
+	annual_fee = deposit_deucted_from_price / mortgage_term;
 
-	int total_monthly_bill = month_pay + interest_rate;
+	interest_fee = (interest_rate / 100) * annual_fee;
 
-	printf("Monthly installments equate to $%d\n", total_monthly_bill);
+	actual_annual_fee = annual_fee + interest_fee;
+
+	monthly_fee = actual_annual_fee / 12;
+
+	// print : monthly fee =
+	printf("\nmonthly fee = %d\n", monthly_fee) ;
+
+	// time to repay loan = 
+printf("\ntime to repay loan (years) = %d\n", mortgage_term) ;
+
 
 	return 0;
 }
